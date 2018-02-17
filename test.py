@@ -42,41 +42,24 @@ model.compile(
 print(model.summary)
 
 # splitting data
-Y = pd.get_dummies(data['label']).values
 from sklearn.model_selection import train_test_split
 X_train, X_test, Y_train, Y_test = train_test_split(
-    X, Y, test_size=0.33, random_state=42)
+    X, data['label'], test_size=0.30, random_state=42)
+
+Y_train = pd.get_dummies(Y_train).values
 
 batch_size = 20
-model.fit(X_train, Y_train, nb_epoch = 8, batch_size = batch_size, verbose = 2)
+model.fit(X_train, Y_train, nb_epoch = 7, batch_size = batch_size, verbose = 2)
 
+y_out = model.predict(X_test)
+Y_pred = []
 
-validation_size = 1500
-
-X_validate = X_test[-validation_size:]
-Y_validate = Y_test[-validation_size:]
-X_test = X_test[:-validation_size]
-Y_test = Y_test[:-validation_size]
-score, acc = model.evaluate(X_test, Y_test, verbose=2, batch_size=batch_size)
-print("score: %.2f" % (score))
-print("acc: %.2f" % (acc))
-
-pos_cnt, neg_cnt, pos_correct, neg_correct = 0, 0, 0, 0
-for x in range(len(X_validate)):
-
-    result = model.predict(
-        X_validate[x].reshape(1, X_test.shape[1]), batch_size=1, verbose=2)[0]
-
-    if np.argmax(result) == np.argmax(Y_validate[x]):
-        if np.argmax(Y_validate[x]) == 0:
-            neg_correct += 1
-        else:
-            pos_correct += 1
-
-    if np.argmax(Y_validate[x]) == 0:
-        neg_cnt += 1
+for i in range(len(y_out)):
+    if y_out[i][0] >= y_out[i][1]:
+        Y_pred.append('ham')
     else:
-        pos_cnt += 1
+        Y_pred.append('spam')
 
-print("non spam _acc", pos_correct / pos_cnt * 100, "%")
-print("spam_acc", neg_correct / neg_cnt * 100, "%")
+# metrics
+from sklearn.metrics import confusion_matrix
+cm = confusion_matrix(Y_test, Y_pred)

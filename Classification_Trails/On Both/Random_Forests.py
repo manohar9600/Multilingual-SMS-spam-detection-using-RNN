@@ -2,29 +2,20 @@
 import pandas as pd
 import numpy as np
 # preprocessing the data
-data = pd.read_csv('spam.csv', encoding = 'latin-1')
-data = data.drop(['Unnamed: 2', 'Unnamed: 3', 'Unnamed: 4'], axis = 1)
+data1 = pd.read_csv('spam.csv', encoding = 'latin-1')
+data1 = data1.drop(['Unnamed: 2', 'Unnamed: 3', 'Unnamed: 4'], axis = 1)
+
+data2 = pd.ExcelFile('revisedindiandataset.xls')
+data2 = data2.parse(0)
+data2 = data2.drop(['code'], axis = 1)
+
+
+data = pd.concat([data1, data2])
+
 # encoding Data
 data['label'] = pd.factorize(data['label'])[0]
-# module for removing unwanted words
-import re
-import nltk
-nltk.download("stopwords")
-from nltk.corpus import stopwords
 
-# for stemming words
-from nltk.stem.porter import PorterStemmer
-temp = []
-for row in data.itertuples():
-    # to keep a - z letters and 0 - 9
-    rev = re.sub("[^0-9a-zA-Z]"," ",row[2])
-    rev = rev.lower()
-    rev = rev.split()
-    ps = PorterStemmer()
-    rev = [ps.stem(word) for word in rev if not word in set(stopwords.words("english"))]
-    rev = " ".join(rev)
-    temp.append(rev)
-data['msg'] = temp
+
 
 # splitting data
 from sklearn.model_selection import train_test_split
@@ -39,7 +30,7 @@ X_test = cv.transform(X_test)
 
 # Training classifier
 from sklearn.ensemble import RandomForestClassifier
-classifier = RandomForestClassifier(n_estimators=50, criterion='entropy')
+classifier = RandomForestClassifier(n_estimators=20, criterion='entropy')
 classifier.fit(X_train, y_train)
 y_pred = classifier.predict(X_test)
 

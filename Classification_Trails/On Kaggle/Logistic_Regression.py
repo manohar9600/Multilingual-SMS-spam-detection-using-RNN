@@ -38,8 +38,8 @@ X_train = cv.transform(X_train)
 X_test = cv.transform(X_test)
 
 # Training classifier
-from sklearn.naive_bayes import MultinomialNB
-classifier = MultinomialNB()
+from sklearn.linear_model import LogisticRegression
+classifier = LogisticRegression(random_state=0)
 classifier.fit(X_train, y_train)
 y_pred = classifier.predict(X_test)
 

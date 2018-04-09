@@ -27,13 +27,12 @@ X_train = cv.transform(X_train)
 X_test = cv.transform(X_test)
 
 # Training classifier
-from sklearn.naive_bayes import GaussianNB
-classifier = GaussianNB()
-classifier.fit(X_train.toarray(), y_train)
-y_pred = classifier.predict(X_test.toarray())
+from sklearn.naive_bayes import MultinomialNB
+classifier = MultinomialNB()
+classifier.fit(X_train, y_train)
+y_pred = classifier.predict(X_test)
 
-#Confusion Matrix                                               [724 470]
-#                                                               [10  189]   65.54
+#Confusion Matrix                                               
 from sklearn.metrics import confusion_matrix
 cm = confusion_matrix(y_test, y_pred)
 print(cm)

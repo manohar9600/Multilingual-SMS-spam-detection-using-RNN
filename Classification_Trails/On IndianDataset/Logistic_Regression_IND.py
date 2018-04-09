@@ -4,11 +4,10 @@ import numpy as np
 # preprocessing the data
 data = pd.ExcelFile('revisedindiandataset.xls')
 data = data.parse(0)
-data.head()
+
+
 # encoding Data
 data['label'] = pd.factorize(data['label'])[0]
-
-
 
 # splitting data
 from sklearn.model_selection import train_test_split
@@ -22,13 +21,13 @@ X_train = cv.transform(X_train)
 X_test = cv.transform(X_test)
 
 # Training classifier
-from sklearn.tree import DecisionTreeClassifier
-classifier = DecisionTreeClassifier(criterion='entropy', random_state = 0)
+from sklearn.linear_model import LogisticRegression
+classifier = LogisticRegression(random_state =0)
 classifier.fit(X_train, y_train)
 y_pred = classifier.predict(X_test)
 
-#Confusion Matrix                                               [822  38 ]
-#                                                               [38  244 ]   93.34
+#Confusion Matrix                                               [806 18]
+#                                                               [38  280]   95.09
 from sklearn.metrics import confusion_matrix
 cm = confusion_matrix(y_test, y_pred)
 print(cm)

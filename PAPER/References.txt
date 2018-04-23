@@ -1,0 +1,4 @@
+1)Banea, C.; Mihalcea, R.; Wiebe, J.; and Hassan, S. 2008.
+Multilingual subjectivity analysis using machine translation.
+In Proceedings of the Conference on Empirical Methods in
+Natural Language Processing, 127–135.

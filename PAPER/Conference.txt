@@ -1,0 +1,33 @@
+Short Messaging Service(SMS) commonly referred to as 'text messaging' are an 
+important means of communication that allow every phone users to exchange short
+length messages(usually less than 160 characters).SMS was the most widely used 
+data application, with an estimated 3.5 billion active users, or about 80% of 
+all mobile subscribers, at the end of 2010(https://en.wikipedia.org/wiki/SMS
+).In recent years spam or unsolicited SMS is a serious problem due to .Although 
+SMS spam is less prevalent than email spam,it still accounts for roughly 1% of 
+texts sent in the United States and 30% of text messages sent in parts of Asia
+(https://searchmobilecomputing.techtarget.com/definition/SMS-spam).
+
+DATASET  
+========
+    DATA		TOTAL	HAM	SPAM
+Kaggle Data		5572	4825	747
+Self Collected		4595	3267	1328
+----------------------------
+    TYPE	LABEL	NUMBER	HAM	SPAM
+ English Data	1	3745	2642	1103
+ Hindi Data	2	155     31	124
+ Mix Data	3	175	89	86
+ Telgu Data	4	520	505	15
+  
+Total 			10167
+
+
+For experimenal purpose,we make use of multi-langauage dataset.
+In these dataset,we have standared English dateset from kaggle.com 
+and real SMS data from own,friends mobile phone.Our own dataset 
+contains data from 3 different languages English,Hindi,Telugu and 
+also the mix of these three languages.All data have been labeled 
+manually as 1,2,3,4 for English,Hindi,Mix,Telgu respectively.Note
+One issue with our collected dataset is that there are repetitions 
+of same text messages.

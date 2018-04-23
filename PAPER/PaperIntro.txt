@@ -1,0 +1,67 @@
+ABSTRACT
+=============================================================================================================================
+Over recent years, growth of mobile phone users increased that lead to increase in SMS messages. SMS messages are often multilingual and the machine learning classification models are usually not applicable across distinct languages. 
+
+Multi-language classification basically done by machine translation techniques in which source language is translated into target language. The results depend on the quality of the translation done by the machine, which is a too expensive method and also prone to error after translation. In this paper, we propose an robust translation-free recurrent  language to vector model for performing multilingual SMS spam detection using wordtovec and LSTM which actually remembers the context of SMS.Our model learns from different languages while training and performs the classification based on it.For our Experimental purposes, we build different machine learning classifiers on the same multilingual SMS dataset that does classifiaction based on frequent words, to compare ourselfs with the proposed sequence model results.
+
+
+
+
+INTRODUCTION
+==============================================================================================================================
+The mobile phone market has grown exponentially in the recent years, an estimated 62.9 percent of the population worldwide already owned a mobile phone and the number of mobile phone users in the world is expected to pass the five billion mark by 2019. As the usage of mobile phones increased and cost to exchange SMS has decreased, SMS's exchanged between mobile phones has increased rapidly. Short Messaging Service(SMS)is a text messaging service that allows mobile phone users to exchange short text messages usually of length less than 160 characters.
+
+As Popularity of SMS have increased, SMS's are becoming the main target for spammers to send unwanted messages that may either be harmfull or commerical advertisements.
+
+SMS are usually of different languages and the models available are not often applicable across distinct languages.Therefore a classification model that is not restricted for single language but for mulitple languages need to be build.
+
+Previous work on multi-language classification uses mainly machine translation techniques and does classifiaction only based on frequent words and theories suggest using different classifiers for differnet languages.
+
+Machine translation method works by translating source language into target language and then applying various machine learning classification algorithms.But, several problems may occur after translation like actuall meaning in the source language may changed after translating to target language, accurate translation may not happen in all the cases this may drastically reduce the performance of the classification model. Even if translation is accurately done  the main disadvantage is availabilty of open-source translatorsas most of the robust translation APIs are not free of cost. Translating large corpus may also makes it too expensive.
+
+As theories suggest using different classifiers for differnet languages, multi-lingual classification can be done effectively but, the main drawback is that every message needs to be identified and then sent to their respective classifier.
+
+
+we are proposing a model where we used only one machine learning classifier that classifies based on the context of the messages rather than frequent words for different types of languages.
+
+
+RELATED WORK
+==========================================================================
+
+
+
+
+
+
+
+
+
+
+Motivation
+==================================================================================================================================
+For our experimental purposes we have tried out all the classification models, and marked down the accuracies they have produced on both English(Kaggle) dataset and Mixed dataset.
+
+Model					English		Mix
+======================================================================
+SVM					97.98		96.21	
+SVM_RBF_Kernel				93.96		91.71
+Navie Bayes				98.42		93.09	
+Logistic Regression				97.48		95.34
+K-Nearest Neighbors			93.10		92.89
+Decision Tree Classification			96.62		95.26
+Random Forest Classification			97.98		96.05
+
+
+The Accuracies are pretty high that we can directly use any of the desired model for commercial purposes.
+But, these models do classification based on the keywords, keywords like "FREE" , "BUY!!" or "OFFER!!" etc. But it doesnt consider the Context of the message which is also the most important for a message to be classified.
+for an exapmle, "I will BUY you a FREE drink, come to my place." this is a HAM message,
+but if we go based on keywords, some classification models may detect it as SPAM.
+
+To deal with the actual context of message is our main motivation to develop this model.
+so in this paper, you will come to know about the model that deals with the actual context, using WordtoVec followed by LSTM(Long Short Term Memory). 
+
+
+
+
+Dataset
+====================================================================================================================================

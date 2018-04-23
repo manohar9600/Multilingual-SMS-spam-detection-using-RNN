@@ -1,0 +1,19 @@
+https://machinelearningmastery.com/use-dropout-lstm-networks-time-series-forecasting/
+
+
+HOW TO USE DROPOUT WITH LSTM
+=================================
+
+Long Short-Term Memory (LSTM) models are a type of recurrent neural network capable of learning sequences of observations.
+
+This may make them a network well suited to time series forecasting.
+
+An issue with LSTMs is that they can easily overfit training data, reducing their predictive skill.
+
+Dropout is a regularization method where input and recurrent connections to LSTM units are probabilistically excluded from activation and weight updates while training a network. This has the effect of reducing overfitting and improving model performance.
+
+Dropout can be applied to the input connection within the LSTM nodes.
+
+A dropout on the input means that for a given probability, the data on the input connection to each LSTM block will be excluded from node activation and weight updates.
+
+In Keras, this is specified with a dropout argument when creating an LSTM layer. The dropout value is a percentage between 0 (no dropout) and 1 (no connection).

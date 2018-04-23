@@ -1,0 +1,23 @@
+Abstract
+================================================================
+
+Over recent years, growth of SMS Spam messages has been increased as the cost to exchange messages has decreased.SMS messages for spam detection are often classified using the frequently repeated words but it doesn't consider the context of the text message.In this paper, we propose a robust recurrent neural model using LSTM which actually deals with the context of the text message by remembering the sequence of the words in message. For our Experimental purposes, we have also build different machine learning classifiers on the same (multilingual) SMS dataset that does classifiaction based on frequently repeated words, to compare ourselfs with the proposed recurrent neural model results.
+
+
+Introduction
+================================================================
+The mobile phone market has grown exponentially in the recent years, an estimated 62.9 percent of the population worldwide already owned a mobile phone and the number of mobile phone users in the world is expected to pass the five billion mark by 2019. As the usage of mobile phones increased and cost to exchange SMS has decreased, SMS's exchanged between mobile phones has increased rapidly. Short Messaging Service(SMS)is a text messaging service that allows mobile phone users to exchange short text messages usually of length less than 160 characters.
+
+As Popularity of SMS have increased, SMS's are becoming the main target for spammers to send unwanted messages that may either be harmfull or commerical advertisements.
+
+Previous work on SMS spam detection, the classification is done  based on frequently repeated words in which we analyse most repeated words like "FREE", "BUY" or "OFFER" etc. from the message dataset while training and use them as features to predict the results.Drawback of this model is that the actuall context of the message is not considered, messages are classified only based on repeated words. For example, if we consider a HAM message "I will BUY you a FREE drink, come to my place." and if we go based on repeated keywords, some classification models may detect it as SPAM.
+
+In this paper we are proposing a model where the actuall context of the message is also consider for the detection of spam using recurrent neural architecture.
+
+The rest of the paper is organised as follows.Section 2 contains related works done in the field of SMS spam detection. Section 3 discusses about detailed implementation including the dataset used and the methodology. In section 4 contains performance calculation and analysis.Finally in section 5 we present conclusion and future work.
+
+
+Related Work
+================================================================
+
+[1]Gomez Hidalgo et al. had done breakthrough work in SMS spam detection. In their work, the authors tested different machine learning classification techniques of email spam filtering on both Spanish and English SMS datasets. Their results demonstrate that Bayesian filtering techniques can be effectively used for SMS spam detection.
